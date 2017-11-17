@@ -3,45 +3,65 @@
   <head>
     <meta charset="utf-8">
     <title>Game</title>
-      <style media="screen">  </style>
+
+      <style media="screen">
+      #figur{
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        top: 300px;
+        background-color: rgb(56, 12, 97);
+      }
+       </style>
   </head>
   <body>
-    <div id="figur"></div>
+
 
     <h1>Klick so schnell du kannst!</h1>
-    <button id="begin">Start!</button>
+     <p >Deine Reaktionszeit: <span id="dauerTime"></span></p>
+
+      <div id="figur"></div>
 
     <script type="text/javascript">
-    alert('Reactiongame!');
 
+      var figur = document.getElementById("figur");
+      var startTime = new Date().getTime();
+      var endTime = new Date().getTime();
+      var time = document.getElementById("figur") inner.html endTime-startTime/1000;
 
-      var figur = document.getElementById("figur";
-
-      function randomInteger (min, max){
+      function randomInteger(min, max){
         var randomNumber = Math.floor(Math.random()*(max-min+1)+min);
         return randomNumber;
+      }
+
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
         }
-
-  document.getElementById("begin").onclick = function(){
-  }
-
+        return color;
+      }
 
 
+      function figurAnzeige(){
+        var size = randomInteger(50, 250);
+        figur.style.display = "block";
+        figur.style.top = randomInteger(100, 500)+"px";
+        figur.style.left = randomInteger(0, 1000) +"px";
+        figur.style.borderRadius = randomInteger(0, 1)*50+"%";
+        figur.style.backgroundColor = getRandomColor();
+        figur.style.width = size+"px";
+        figur.style.height = size+"px";
+        startTime = new Date().getTime();
+      }
 
-
-
-
-
-
-
-          //function randomInteger (min, max){
-            //var randomNumber = Math.floor(Math.random()*(max-min+1)+min);
-            //return randomNumber;
-        //  }
-
-          //var num = randomInteger(10,60);
-
-          //document.getElementById("hallo-hallo").innerHTML += num;
+      figur.onclick = function(){
+        endTime = new Date().getTime();
+        console.log(endTime-startTime);
+        figur.style.display = "none";
+        figurAnzeige();
+      }
 
     </script>
 
