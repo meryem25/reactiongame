@@ -5,20 +5,30 @@
     <title>Game</title>
 
       <style media="screen">
+      body{
+        background: url("bilder/background.png")  no-repeat center fixed;
+        background-size: cover;
+      }
       #figur{
         height: 200px;
         width: 200px;
         position: absolute;
         top: 300px;
-        background-color: rgb(56, 12, 97);
+        background-color: transparent;
+        background-image: url("bilder/bild3.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+
       }
        </style>
   </head>
   <body>
 
 
-    <h1>Klick so schnell du kannst!</h1>
-     <p >Deine Reaktionszeit: <span id="dauerTime"></span></p>
+    <h1>Spray how fast you can!</h1>
+     <p >Your Reactiontime: <span id="dauerTime"></span></p>
 
       <div id="figur"></div>
 
@@ -45,12 +55,16 @@
 
 
       function figurAnzeige(){
+        var images = ["bilder/bild1.png","bilder/bild2.png","bilder/bild3.png","bilder/bild4.png"];
+
         var size = randomInteger(50, 250);
         figur.style.display = "block";
         figur.style.top = randomInteger(100, 500)+"px";
         figur.style.left = randomInteger(0, 1000) +"px";
         figur.style.borderRadius = randomInteger(0, 1)*50+"%";
-        figur.style.backgroundColor = getRandomColor();
+        //figur.style.backgroundColor = getRandomColor();
+        figur.style.backgroundImage = "url("+images[randomInteger(0,images.length-1)]+")";
+        figur.style.backgroundSize = "contain";
         figur.style.width = size+"px";
         figur.style.height = size+"px";
         startTime = new Date().getTime();
