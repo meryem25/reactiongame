@@ -27,7 +27,7 @@
       var figur = document.getElementById("figur");
       var startTime = new Date().getTime();
       var endTime = new Date().getTime();
-      var time = document.getElementById("figur") inner.html endTime-startTime/1000;
+
 
       function randomInteger(min, max){
         var randomNumber = Math.floor(Math.random()*(max-min+1)+min);
@@ -58,9 +58,9 @@
 
       figur.onclick = function(){
         endTime = new Date().getTime();
-        console.log(endTime-startTime);
+        document.getElementById("dauerTime").innerHTML= (endTime-startTime)/1000;
         figur.style.display = "none";
-        figurAnzeige();
+        setTimeout(figurAnzeige, randomInteger(500, 1500));
       }
 
     </script>
